@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default paint = dark theme, matches Hero so there is no flash on load */
+  --bg: #0e0b14;
+  --surface: #171220;
+  --ink: #f5f0ee;
+  --dim: #a79db0;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #ff4d6d;
+  --accent2: #ffd166;
+  --nav-h: 84px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Theming ---------- */
+
+.bg-theme {
+  background: var(--bg);
+}
+.surface-theme {
+  background: var(--surface);
+}
+.text-ink {
+  color: var(--ink);
+}
+.text-dim {
+  color: var(--dim);
+}
+.text-accent {
+  color: var(--accent);
+}
+.border-line {
+  border-color: var(--line);
+}
+
+/* ---------- Typography ---------- */
+
+.eyebrow {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.display-1 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5.4vw, 5.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.display-2 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.8vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+
+.display-3 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.body-lg {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--dim);
+  font-weight: 400;
+}
+
+/* ---------- Layout ---------- */
+
+.container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 640px) {
+  .container-x {
+    padding-inline: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-inline: 64px;
+  }
+}
+
+.section-pad {
+  padding-block: clamp(80px, 11vw, 148px);
+}
+
+/* ---------- Bold asymmetric motifs (signature look) ---------- */
+
+.tilt-1 {
+  transform: rotate(-2deg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.tilt-2 {
+  transform: rotate(1.5deg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.tilt-3 {
+  transform: rotate(-1deg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.tilt-1:hover,
+.tilt-2:hover,
+.tilt-3:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.giant-number {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 800;
+  color: var(--ink);
+  opacity: 0.05;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.diagonal-cut {
+  clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 26px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 0.35s ease, background 0.35s ease, color 0.35s ease, transform 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+.btn-ghost {
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button {
+  cursor: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .tilt-1,
+  .tilt-2,
+  .tilt-3 {
+    transform: none !important;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.hero-fallback {
+  background: radial-gradient(circle at 50% 45%, rgba(255, 77, 109, 0.28), transparent 60%);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
